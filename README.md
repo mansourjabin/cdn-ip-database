@@ -21,6 +21,16 @@ Official IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Direct, author
   - AWS `ip-ranges.json` is strictly filtered to `service = CLOUDFRONT_ORIGIN_FACING`.
   - Table below is rebuilt from `data/sources.json`.
 
+## Notes
+
+<!-- BEGIN CUSTOM_NOTES -->
+- Only official/public provider endpoints are used where available; otherwise `static_ips` documents known ranges.
+- CloudFront is filtered to `CLOUDFRONT_ORIGIN_FACING` to avoid over-allowlisting edge networks.
+- Resolver is resilient: per-URL retries and timeouts; failures do not stop the job.
+- Output is deterministic (deduped/sorted) to keep diffs and releases clean.
+- Daily automation publishes a release with the resolved list for downstream consumers.
+<!-- END CUSTOM_NOTES -->
+
 ### Local usage
 
 ```bash

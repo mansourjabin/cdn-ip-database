@@ -5,13 +5,14 @@ END_MARKER = "<!-- END PROVIDER_TABLE -->"
 
 
 def generate_table(providers):
-    table = "| Provider | IP Source(s) | ASN |\n"
-    table += "|----------|--------------|-----|\n"
+    table = "| Provider | IP Source(s) | ASN | Note |\n"
+    table += "|----------|--------------|-----|------|\n"
     for p in providers:
         provider = p.get('provider', '')
         urls = p.get('urls', [])
         asns = p.get('asns', [])
         static_ips = p.get('static_ips', [])
+        note = p.get('note', '')
         
         source_info = []
         if urls:
@@ -22,7 +23,7 @@ def generate_table(providers):
         source_text = '<br>'.join(source_info)
         asn_list = ', '.join(asns)
         
-        table += f"| {provider} | {source_text} | {asn_list} |\n"
+        table += f"| {provider} | {source_text} | {asn_list} | {note} |\n"
     return table
 
 

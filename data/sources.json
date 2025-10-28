@@ -78,7 +78,8 @@
       "149.28.189.219",
       "149.28.118.26",
       "104.207.131.132"
-    ]
+    ],
+    "note": "No official public IP list URL. IPv4 addresses provided by BelugaCDN via direct correspondence."
   },
   {
     "provider": "Bunny",
@@ -303,54 +304,63 @@
     "provider": "Alibaba Cloud CDN",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "Azion",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "BaishanCloud",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "ChinaCache (QUANTIL)",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "Huawei Cloud CDN",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "KeyCDN",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "OVHcloud CDN",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "Tencent Cloud CDN",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "No public IP/ASN published."
   },
   {
     "provider": "CDNsun",
     "urls": [],
     "asns": [],
-    "static_ips": []
+    "static_ips": [],
+    "note": "IP list available via paid API; no public IP ranges."
   }
 ]

@@ -19,7 +19,8 @@
       "static_ips": {
         "type": "array",
         "items": { "type": "string", "minLength": 1 }
-      }
+      },
+      "note": { "type": "string" }
     },
     "additionalProperties": false
   }

@@ -62,5 +62,6 @@ jobs:
           body: "Automated resolved IPs and README update."
           files: |
             data/resolved_ips.json
+            data/sources.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
