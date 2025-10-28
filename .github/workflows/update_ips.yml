@@ -24,23 +24,23 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r cdn-ip-database/requirements.txt
+          pip install -r requirements.txt
 
       - name: Validate sources.json
-        run: python cdn-ip-database/scripts/validate_sources.py
+        run: python scripts/validate_sources.py
 
       - name: Resolve IPs
-        run: python cdn-ip-database/scripts/resolve_ips.py
+        run: python scripts/resolve_ips.py
       
       - name: Update README
-        run: python cdn-ip-database/scripts/update_readme.py
+        run: python scripts/update_readme.py
 
       - name: Commit and push if changed
         id: auto_commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated IP data and README update"
-          file_pattern: "cdn-ip-database/data/resolved_ips.json cdn-ip-database/README.md"
+          file_pattern: "data/resolved_ips.json README.md"
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions-bot@github.com"
           commit_author: "GitHub Actions Bot <actions-bot@github.com>"
@@ -58,6 +58,6 @@ jobs:
           name: "IP Update ${{ steps.tag.outputs.TAG }}"
           body: "Automated resolved IPs and README update."
           files: |
-            cdn-ip-database/data/resolved_ips.json
+            data/resolved_ips.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

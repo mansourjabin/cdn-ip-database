@@ -2,10 +2,10 @@ import json
 import sys
 from jsonschema import validate, Draft202012Validator
 
-SCHEMA_PATH = 'cdn-ip-database/schema/sources.schema.json'
+SCHEMA_PATH = 'schema/sources.schema.json'
 SOURCES_PATH_CANDIDATES = [
-    'cdn-ip-database/data/sources.json',
-    'cdn-ip-database/sources.json',
+    'data/sources.json',
+    'sources.json',
 ]
 
 def load_sources_path() -> str:

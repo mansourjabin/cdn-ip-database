@@ -69,8 +69,8 @@ def _find_ips_in_json(data):
 if __name__ == "__main__":
     # Try data/ then root for sources.json
     candidates = [
-        'cdn-ip-database/data/sources.json',
-        'cdn-ip-database/sources.json',
+        'data/sources.json',
+        'sources.json',
     ]
     sources_file = None
     for p in candidates:
@@ -85,5 +85,5 @@ if __name__ == "__main__":
 
     resolved_ips_data = resolve_ips(sources_file)
     # Write to data path
-    with open('cdn-ip-database/data/resolved_ips.json', 'w', encoding='utf-8') as f:
+    with open('data/resolved_ips.json', 'w', encoding='utf-8') as f:
         json.dump(resolved_ips_data, f, indent=2, sort_keys=True)

@@ -62,8 +62,8 @@ def update_readme(sources_path, readme_path):
 if __name__ == "__main__":
     # Prefer data/ then fallback to root
     candidates = [
-        'cdn-ip-database/data/sources.json',
-        'cdn-ip-database/sources.json',
+        'data/sources.json',
+        'sources.json',
     ]
     sources_file = None
     for p in candidates:
@@ -76,5 +76,5 @@ if __name__ == "__main__":
     if not sources_file:
         raise FileNotFoundError('sources.json not found in expected locations')
 
-    readme_file = 'cdn-ip-database/README.md'
+    readme_file = 'README.md'
     update_readme(sources_file, readme_file)
