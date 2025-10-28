@@ -1,0 +1,63 @@
+name: Update CDN IPs
+
+on:
+  schedule:
+    - cron: '10 0 * * *' # Runs at 00:10 UTC daily
+  workflow_dispatch: # Allows manual triggering
+
+concurrency:
+  group: update-cdn-ips
+  cancel-in-progress: true
+
+jobs:
+  update-ips:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r cdn-ip-database/requirements.txt
+
+      - name: Validate sources.json
+        run: python cdn-ip-database/scripts/validate_sources.py
+
+      - name: Resolve IPs
+        run: python cdn-ip-database/scripts/resolve_ips.py
+      
+      - name: Update README
+        run: python cdn-ip-database/scripts/update_readme.py
+
+      - name: Commit and push if changed
+        id: auto_commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated IP data and README update"
+          file_pattern: "cdn-ip-database/data/resolved_ips.json cdn-ip-database/README.md"
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "actions-bot@github.com"
+          commit_author: "GitHub Actions Bot <actions-bot@github.com>"
+
+      - name: Compute release tag
+        if: steps.auto_commit.outputs.changes_detected == 'true'
+        id: tag
+        run: echo "TAG=$(date -u +%Y%m%d)-ip-update" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        if: steps.auto_commit.outputs.changes_detected == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.TAG }}
+          name: "IP Update ${{ steps.tag.outputs.TAG }}"
+          body: "Automated resolved IPs and README update."
+          files: |
+            cdn-ip-database/data/resolved_ips.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
