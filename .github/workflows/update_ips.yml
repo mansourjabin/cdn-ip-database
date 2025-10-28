@@ -9,6 +9,9 @@ concurrency:
   group: update-cdn-ips
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   update-ips:
     runs-on: ubuntu-latest
