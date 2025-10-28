@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 BEGIN_MARKER = "<!-- BEGIN PROVIDER_TABLE -->"
@@ -58,11 +59,9 @@ def update_readme(sources_path, readme_path):
         last_updated = datetime.now(tz=timezone.utc)
     last_updated_str = last_updated.strftime('%Y-%m-%d %H:%M UTC')
 
-    # Replace last updated marker if present
-    if LAST_BEGIN in content and LAST_END in content:
-        start = content.index(LAST_BEGIN) + len(LAST_BEGIN)
-        end = content.index(LAST_END, start)
-        content = content[:start] + last_updated_str + content[end:]
+    # Replace ALL instances of last updated markers across README
+    pattern = re.compile(r"<!--\s*BEGIN_LAST_UPDATED\s*-->.*?<!--\s*END_LAST_UPDATED\s*-->", re.DOTALL)
+    content = re.sub(pattern, f"{LAST_BEGIN}{last_updated_str}{LAST_END}", content)
 
     # Prefer marker-based replacement
     if BEGIN_MARKER in content and END_MARKER in content:
