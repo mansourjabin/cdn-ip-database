@@ -30,13 +30,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Validate sources.json
-        run: python scripts/validate_sources.py
+        run: python -m scripts.validate_sources
 
       - name: Resolve IPs
-        run: python scripts/resolve_ips.py
+        run: python -m scripts.resolve_ips
       
       - name: Update README
-        run: python scripts/update_readme.py
+        run: python -m scripts.update_readme
 
       - name: Commit and push if changed
         id: auto_commit
