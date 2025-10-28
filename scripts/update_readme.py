@@ -1,5 +1,9 @@
 import json
 
+BEGIN_MARKER = "<!-- BEGIN PROVIDER_TABLE -->"
+END_MARKER = "<!-- END PROVIDER_TABLE -->"
+
+
 def generate_table(providers):
     table = "| Provider | IP Source(s) | ASN |\n"
     table += "|----------|--------------|-----|\n"
@@ -21,6 +25,7 @@ def generate_table(providers):
         table += f"| {provider} | {source_text} | {asn_list} |\n"
     return table
 
+
 def update_readme(sources_path, readme_path):
     with open(sources_path, 'r', encoding='utf-8') as f:
         providers = json.load(f)
@@ -29,35 +34,31 @@ def update_readme(sources_path, readme_path):
     
     with open(readme_path, 'r', encoding='utf-8') as f:
         content = f.read()
-        
-    start_marker = "## Provider List"
-    # Find the next section to mark the end of the provider list section
-    end_marker = "\n## "
-    
-    start_index = content.find(start_marker)
-    if start_index == -1:
-        print("Provider list section not found in README.")
-        return
-    
-    # Search for the end marker after the start marker
-    end_index = content.find(end_marker, start_index + len(start_marker))
-    
-    # Construct the new content
-    # Part before the provider list
-    before_section = content[:start_index]
-    
-    # The new provider list section
-    provider_section = start_marker + "\n\n" + table + "\n"
 
-    # Part after the provider list (if it exists)
-    after_section = ""
-    if end_index != -1:
-        after_section = content[end_index:]
-    
-    new_content = before_section + provider_section + after_section
+    # Prefer marker-based replacement
+    if BEGIN_MARKER in content and END_MARKER in content:
+        start = content.index(BEGIN_MARKER) + len(BEGIN_MARKER)
+        end = content.index(END_MARKER, start)
+        new_content = content[:start] + "\n\n" + table + "\n\n" + content[end:]
+    else:
+        # Fallback: find Provider List section and wrap table with markers
+        start_marker = "## Provider List"
+        end_marker = "\n## "
+        start_index = content.find(start_marker)
+        if start_index == -1:
+            print("Provider list section not found in README.")
+            return
+        # Search for the end marker after the start marker
+        after = content.find(end_marker, start_index + len(start_marker))
+        before_section = content[:start_index]
+        header = start_marker + "\n\n" + BEGIN_MARKER
+        body = "\n\n" + table + "\n\n" + END_MARKER + "\n"
+        after_section = content[after:] if after != -1 else ""
+        new_content = before_section + header + body + after_section
 
     with open(readme_path, 'w', encoding='utf-8') as f:
         f.write(new_content)
+
 
 if __name__ == "__main__":
     # Prefer data/ then fallback to root

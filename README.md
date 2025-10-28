@@ -44,6 +44,8 @@ python cdn-ip-database/scripts/update_readme.py
 
 ## Provider List
 
+<!-- BEGIN PROVIDER_TABLE -->
+
 | Provider | IP Source(s) | ASN |
 |----------|--------------|-----|
 | Akamai | [techdocs.akamai.com/property-manager/pdfs/akamai_ipv4_CIDRs.txt](https://techdocs.akamai.com/property-manager/pdfs/akamai_ipv4_CIDRs.txt)<br>[techdocs.akamai.com/property-manager/pdfs/akamai_ipv6_CIDRs.txt](https://techdocs.akamai.com/property-manager/pdfs/akamai_ipv6_CIDRs.txt) | AS12222, AS133103, AS16625, AS16702, AS17204, AS18680, AS18717, AS20189, AS20940, AS21342, AS21357, AS21399, AS22207, AS22452, AS23454, AS23455, AS23903, AS24319, AS26008, AS30675, AS31107, AS31108, AS31109, AS31110, AS31377, AS33047, AS33905, AS34164, AS34850, AS35204, AS35993, AS35994, AS36183, AS393560, AS39836, AS43639, AS55409, AS55770, AS63949 |
@@ -86,6 +88,7 @@ python cdn-ip-database/scripts/update_readme.py
 | Tencent Cloud CDN |  |  |
 | CDNsun |  |  |
 
+<!-- END PROVIDER_TABLE -->
 
 ## Contributing
 
