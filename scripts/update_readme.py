@@ -1,7 +1,11 @@
 import json
+import os
+from datetime import datetime, timezone
 
 BEGIN_MARKER = "<!-- BEGIN PROVIDER_TABLE -->"
 END_MARKER = "<!-- END PROVIDER_TABLE -->"
+LAST_BEGIN = "<!-- BEGIN_LAST_UPDATED -->"
+LAST_END = "<!-- END_LAST_UPDATED -->"
 
 
 def generate_table(providers):
@@ -35,6 +39,30 @@ def update_readme(sources_path, readme_path):
     
     with open(readme_path, 'r', encoding='utf-8') as f:
         content = f.read()
+
+    # Compute last updated timestamp (prefer resolved_ips.json mtime, fallback to now)
+    last_updated = None
+    mtime_candidates = [
+        'data/resolved_ips.json',
+        'resolved_ips.json',
+    ]
+    for path in mtime_candidates:
+        if os.path.exists(path):
+            try:
+                ts = os.path.getmtime(path)
+                last_updated = datetime.fromtimestamp(ts, tz=timezone.utc)
+                break
+            except OSError:
+                continue
+    if last_updated is None:
+        last_updated = datetime.now(tz=timezone.utc)
+    last_updated_str = last_updated.strftime('%Y-%m-%d %H:%M UTC')
+
+    # Replace last updated marker if present
+    if LAST_BEGIN in content and LAST_END in content:
+        start = content.index(LAST_BEGIN) + len(LAST_BEGIN)
+        end = content.index(LAST_END, start)
+        content = content[:start] + last_updated_str + content[end:]
 
     # Prefer marker-based replacement
     if BEGIN_MARKER in content and END_MARKER in content:

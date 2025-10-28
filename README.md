@@ -2,11 +2,33 @@
 
 # CDN IP Registry
 
-Official IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Direct, authoritative source URLs for Cloudflare, Akamai, Fastly, AWS CloudFront, Google Cloud, ArvanCloud, and more.
+Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Direct, authoritative source URLs for Cloudflare, Akamai, Fastly, AWS CloudFront, Google Cloud, ArvanCloud, and more.
+
+<p>
+  <a href="data/resolved_ips.json">
+    <img alt="Resolved IPs JSON" src="https://img.shields.io/badge/Resolved%20IPs-JSON-blue" />
+  </a>
+  <a href="data/sources.json">
+    <img alt="Provider Sources JSON" src="https://img.shields.io/badge/Provider%20Sources-JSON-8A2BE2" />
+  </a>
+  <a href="#provider-list">
+    <img alt="Provider Table" src="https://img.shields.io/badge/Jump-Provider%20Table-brightgreen" />
+  </a>
+  <img alt="Schedule" src="https://img.shields.io/badge/Schedule-Daily%20@%2000:10%20UTC-informational" />
+  <br />
+  <strong>Last updated:</strong> <!-- BEGIN_LAST_UPDATED -->TBD<!-- END_LAST_UPDATED --> (UTC)
+  
+</p>
 
 </div>
 
 ---
+
+## Quick links
+
+- **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->TBD<!-- END_LAST_UPDATED -->**
+- **Provider sources catalog (JSON)**: [data/sources.json](data/sources.json)
+- **Jump to provider table**: [Provider List](#provider-list)
 
 ## Data & Automation
 
@@ -24,28 +46,14 @@ Official IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Direct, author
 ## Notes
 
 <!-- BEGIN CUSTOM_NOTES -->
-- Only official/public provider endpoints are used where available; otherwise `static_ips` documents known ranges.
+- Only provider-published public endpoints are used where available; otherwise `static_ips` documents known ranges.
 - CloudFront is filtered to `CLOUDFRONT_ORIGIN_FACING` to avoid over-allowlisting edge networks.
 - Resolver is resilient: per-URL retries and timeouts; failures do not stop the job.
 - Output is deterministic (deduped/sorted) to keep diffs and releases clean.
 - Daily automation publishes a release with the resolved list for downstream consumers.
 <!-- END CUSTOM_NOTES -->
 
-### Local usage
-
-```bash
-# install
-pip install -r cdn-ip-database/requirements.txt
-
-# validate sources.json against schema
-python cdn-ip-database/scripts/validate_sources.py
-
-# generate resolved IPs → data/resolved_ips.json
-python cdn-ip-database/scripts/resolve_ips.py
-
-# rebuild the README provider table from data/sources.json
-python cdn-ip-database/scripts/update_readme.py
-```
+ 
 
 ### Extending providers
 - Edit `data/sources.json` and add an object with:
@@ -106,10 +114,10 @@ python cdn-ip-database/scripts/update_readme.py
 Contributions are welcome. Please open a pull request to add or correct entries.
 
 - Include provider name
-- Provide direct official URL(s) for IPv4 and/or IPv6 lists (if any)
-- Add ASN(s) if officially documented
+- Provide direct provider-published URL(s) for IPv4 and/or IPv6 lists (if any)
+- Add ASN(s) if documented by the provider
 - Add a short note for special cases (e.g., “no public list”, “paid API only”)
-- If the source is not obviously official, include a reference link to docs
+- If the source is not clearly provider-published, include a reference link to docs
 
 ## Keywords
 
