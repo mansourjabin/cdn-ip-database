@@ -30,7 +30,7 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
 ## Quick links
 
 - **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED -->**
-- **Resolved IP ranges (TEXT)**: [data/sources.json](data/sources.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED -->**
+- **Resolved IP ranges (TEXT)**: [data/cdn.lst](data/cdn.lst) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED -->**
 - **Provider sources catalog (JSON)**: [data/sources.json](data/sources.json)
 - **Jump to provider table**: [Provider List](#provider-list)
 
@@ -39,7 +39,7 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
 - **Data files**
   - **Sources (source of truth)**: [data/sources.json](data/sources.json)
   - **Resolved IPs JSON (auto-generated daily)**: [data/resolved_ips.json](data/resolved_ips.json)
-  - **Resolved IPs TEXT (auto-generated daily)**: [data/resolved_ips.json](data/cdn.lst)
+  - **Resolved IPs TEXT (auto-generated daily)**: [data/cdn.lst](data/cdn.lst)
 - **Schedule**: Daily at 00:10 UTC (GitHub Actions)
 - **Runtime**: Python 3.12, pinned dependencies
 - **Releases**: On changes, an automated release is created with `data/resolved_ips.json` & `data/cdn.lst` attached.
