@@ -8,6 +8,9 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
   <a href="data/resolved_ips.json">
     <img alt="Resolved IPs JSON" src="https://img.shields.io/badge/Resolved%20IPs-JSON-blue" />
   </a>
+  <a href="data/cdn.lst">
+    <img alt="Resolved IPs TEXT" src="https://img.shields.io/badge/Resolved%20IPs%20-TEXT-FFFFFF" />
+  </a>
   <a href="data/sources.json">
     <img alt="Provider Sources JSON" src="https://img.shields.io/badge/Provider%20Sources-JSON-8A2BE2" />
   </a>
@@ -26,7 +29,8 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
 
 ## Quick links
 
-- **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:18 UTC<!-- END_LAST_UPDATED -->**
+- **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED -->**
+- **Resolved IP ranges (TEXT)**: [data/cdn.lst](data/cdn.lst) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED -->**
 - **Provider sources catalog (JSON)**: [data/sources.json](data/sources.json)
 - **Jump to provider table**: [Provider List](#provider-list)
 
@@ -34,10 +38,11 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
 
 - **Data files**
   - **Sources (source of truth)**: [data/sources.json](data/sources.json)
-  - **Resolved IPs (auto-generated daily)**: [data/resolved_ips.json](data/resolved_ips.json)
+  - **Resolved IPs JSON (auto-generated daily)**: [data/resolved_ips.json](data/resolved_ips.json)
+  - **Resolved IPs TEXT (auto-generated daily)**: [data/cdn.lst](data/cdn.lst)
 - **Schedule**: Daily at 00:10 UTC (GitHub Actions)
 - **Runtime**: Python 3.12, pinned dependencies
-- **Releases**: On changes, an automated release is created with `data/resolved_ips.json` attached.
+- **Releases**: On changes, an automated release is created with `data/resolved_ips.json` & `data/cdn.lst` attached.
 - **Behavior**:
   - Robust HTTP with retries/backoff; failures are logged and skipped (job continues).
   - AWS `ip-ranges.json` is strictly filtered to `service = CLOUDFRONT_ORIGIN_FACING`.

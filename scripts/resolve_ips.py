@@ -88,6 +88,8 @@ def main() -> None:
     session = get_session()
 
     output: Dict[str, Dict[str, List[str]]] = {}
+    all_ips: List[str] = []
+    
     for p in providers:
         name = p.get("provider", "")
         if not name:
@@ -98,8 +100,9 @@ def main() -> None:
             "asns": list(asns),
             "ips": list(ips),
         }
+        all_ips.extend(ips)
 
-    # Ensure output directory exists
+    # Ensure output directory exists and write original JSON file
     out_candidates = [
         os.path.join("data", "resolved_ips.json"),
         "resolved_ips.json",
@@ -112,7 +115,19 @@ def main() -> None:
         json.dump(output, f, indent=2, ensure_ascii=False, sort_keys=True)
         f.write("\n")
 
+    # Remove duplicates and sort
+    unique_ips = normalize_dedupe_sort(all_ips)
+
+    # Write to cdn.lst file in the same directory as resolved_ips.json
+    cdn_lst_path = os.path.join(os.path.dirname(out_path), "cdn.lst")
+    with open(cdn_lst_path, "w", encoding="utf-8") as f:
+        for ip in unique_ips:
+            f.write(ip + "\n")
+
+    print(f"Successfully processed {len(providers)} providers")
+    print(f"Generated {out_path} with structured data")
+    print(f"Generated {cdn_lst_path} with {len(unique_ips)} unique IP addresses (IPv4 and IPv6)")
+
 
 if __name__ == "__main__":
     main()
-

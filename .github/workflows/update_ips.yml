@@ -43,7 +43,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated IP data and README update"
-          file_pattern: "data/resolved_ips.json README.md"
+          file_pattern: "data/resolved_ips.json data/cdn.lst README.md"
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions-bot@github.com"
           commit_author: "GitHub Actions Bot <actions-bot@github.com>"
@@ -63,5 +63,6 @@ jobs:
           files: |
             data/resolved_ips.json
             data/sources.json
+            data/cdn.lst
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
