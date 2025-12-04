@@ -19,7 +19,7 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
   </a>
   <img alt="Schedule" src="https://img.shields.io/badge/Schedule-Daily%20@%2000:10%20UTC-informational" />
   <br />
-  <strong>Last updated:</strong> <!-- BEGIN_LAST_UPDATED -->2025-12-04 02:17 UTC<!-- END_LAST_UPDATED --> (UTC)
+  <strong>Last updated:</strong> <!-- BEGIN_LAST_UPDATED -->2025-12-04 02:18 UTC<!-- END_LAST_UPDATED --> (UTC)
   
 </p>
 
