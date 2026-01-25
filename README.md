@@ -19,7 +19,7 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
   </a>
   <img alt="Schedule" src="https://img.shields.io/badge/Schedule-Daily%20@%2000:10%20UTC-informational" />
   <br />
-  <strong>Last updated:</strong> <!-- BEGIN_LAST_UPDATED -->2026-01-24 02:28 UTC<!-- END_LAST_UPDATED --> (UTC)
+  <strong>Last updated:</strong> <!-- BEGIN_LAST_UPDATED -->2026-01-25 02:45 UTC<!-- END_LAST_UPDATED --> (UTC)
   
 </p>
 
@@ -29,8 +29,8 @@ Provider-published IP ranges (IPv4/IPv6) and ASN numbers for CDN providers. Dire
 
 ## Quick links
 
-- **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2026-01-24 02:28 UTC<!-- END_LAST_UPDATED -->**
-- **Resolved IP ranges (TEXT)**: [data/cdn.lst](data/cdn.lst) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2026-01-24 02:28 UTC<!-- END_LAST_UPDATED -->**
+- **Resolved IP ranges (JSON)**: [data/resolved_ips.json](data/resolved_ips.json) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2026-01-25 02:45 UTC<!-- END_LAST_UPDATED -->**
+- **Resolved IP ranges (TEXT)**: [data/cdn.lst](data/cdn.lst) — updated daily at 00:10 UTC · last update: **<!-- BEGIN_LAST_UPDATED -->2026-01-25 02:45 UTC<!-- END_LAST_UPDATED -->**
 - **Provider sources catalog (JSON)**: [data/sources.json](data/sources.json)
 - **Jump to provider table**: [Provider List](#provider-list)
 
